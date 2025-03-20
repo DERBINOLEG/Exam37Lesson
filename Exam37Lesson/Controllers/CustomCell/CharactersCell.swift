@@ -17,6 +17,8 @@ class CharactersCell: UITableViewCell {
         return $0
     }(UIScrollView())
     private let hStackView: UIStackView = {
+        $0.axis = .horizontal
+        $0.spacing = 10
         return $0
     }(UIStackView())
 //    MARK: Initializations
@@ -27,6 +29,14 @@ class CharactersCell: UITableViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+//    MARK: Methods
+    func configure(model: CustomViewModel) {
+        sectionTitle.text = model.sectionTitle
+        for character in model.characterInfo {
+            let view = CharacterCustomView(characterModel: character)
+            hStackView.addArrangedSubview(view)
+        }
     }
 }
 //MARK: - SetupUI
