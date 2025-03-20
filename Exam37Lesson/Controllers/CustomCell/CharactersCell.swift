@@ -42,7 +42,8 @@ class CharactersCell: UITableViewCell {
 //MARK: - SetupUI
 private extension CharactersCell {
     func setupUI() {
-        [sectionTitle, hScrollView, hStackView].forEach {contentView.addSubview($0)}
+        [sectionTitle, hScrollView].forEach {contentView.addSubview($0)}
+        hScrollView.addSubview(hStackView)
         setupLayout()
     }
 }
@@ -59,7 +60,8 @@ private extension CharactersCell {
             hScrollView.topAnchor.constraint(equalTo: sectionTitle.bottomAnchor, constant: 10),
             hScrollView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             hScrollView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
-            hScrollView.heightAnchor.constraint(equalToConstant: 200),
+            hScrollView.heightAnchor.constraint(equalToConstant: 350),
+            hScrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             
             hStackView.topAnchor.constraint(equalTo: hScrollView.topAnchor, constant: 10),
             hStackView.leadingAnchor.constraint(equalTo: hScrollView.leadingAnchor),

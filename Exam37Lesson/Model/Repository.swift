@@ -6,12 +6,14 @@
 //
 
 import Foundation
-func getCustomViewModels() -> [CustomViewModel] {
-    [CustomViewModel(
-        sectionTitle: "First Section",
-        characterInfo: [CharacterModel(
-            imageName: "NARUTO",
-            description: """
+
+class Repository {
+    func getCustomViewModels() -> [CustomViewModel] {
+        [CustomViewModel(
+            sectionTitle: "First Section",
+            characterInfo: [CharacterModel(
+                imageName: "NARUTO",
+                description: """
                              Главный герой аниме и манги. Шиноби Деревни Скрытого Листа и член
                              команды Какаши (команда номер 7). Потомок    клана Узумаки, третий и
                              текущий джинчурики Курамы — девятихвостого лиса. Является последней
@@ -19,10 +21,10 @@ func getCustomViewModels() -> [CustomViewModel] {
                              войны шиноби женился на Хинате, впоследствии у них рождается сын
                              Боруто и дочь Химавари.
                              """
-        ),
-                        CharacterModel(
-                            imageName: "KAKASI",
-                            description: """
+            ),
+                            CharacterModel(
+                                imageName: "KAKASI",
+                                description: """
                             Джонин Деревни Скрытого Листа. Сын легендарного Белого Клыка Конохи —
                             Сакумо Хатаке. Находился в команде четвёртого Хокаге — Минато Намикадзе.
                             Теперь же возглавляет команду №7. Обладает Шаринганом, который достался
@@ -30,22 +32,22 @@ func getCustomViewModels() -> [CustomViewModel] {
                             Какаши Шаринган. Всегда опаздывает и читает извращенные книги Джирайи.
                             Становится Шестым Хокаге.
                             """
-                        ),
-                        CharacterModel(
-                            imageName: "CUNADE",
-                            description: """
+                            ),
+                            CharacterModel(
+                                imageName: "CUNADE",
+                                description: """
                             Пятая Хокаге Деревни Скрытого Листа. Одна из лучших ниндзя-медиков,
                             одна из трёх Саннинов и внучка Первого Хокаге — Хаширамы Сенджу и
                             первого джинчурики девятихвостого — Мито Узумаки. Учитель Харуно
                             Сакуры и Шизуне — племянницы её возлюбленного Дана Като.
                             """
-                        )]
-    ),
-     CustomViewModel(
-         sectionTitle: "Second Section",
-         characterInfo: [CharacterModel(
-             imageName: "NARUTO",
-             description: """
+                            )]
+        ),
+         CustomViewModel(
+            sectionTitle: "Second Section",
+            characterInfo: [CharacterModel(
+                imageName: "NARUTO",
+                description: """
                               Главный герой аниме и манги. Шиноби Деревни Скрытого Листа и член
                               команды Какаши (команда номер 7). Потомок    клана Узумаки, третий и
                               текущий джинчурики Курамы — девятихвостого лиса. Является последней
@@ -53,10 +55,10 @@ func getCustomViewModels() -> [CustomViewModel] {
                               войны шиноби женился на Хинате, впоследствии у них рождается сын
                               Боруто и дочь Химавари.
                               """
-         ),
-                         CharacterModel(
-                             imageName: "KAKASI",
-                             description: """
+            ),
+                            CharacterModel(
+                                imageName: "KAKASI",
+                                description: """
                              Джонин Деревни Скрытого Листа. Сын легендарного Белого Клыка Конохи —
                              Сакумо Хатаке. Находился в команде четвёртого Хокаге — Минато Намикадзе.
                              Теперь же возглавляет команду №7. Обладает Шаринганом, который достался
@@ -64,21 +66,21 @@ func getCustomViewModels() -> [CustomViewModel] {
                              Какаши Шаринган. Всегда опаздывает и читает извращенные книги Джирайи.
                              Становится Шестым Хокаге.
                              """
-                         ),
-                         CharacterModel(
-                             imageName: "CUNADE",
-                             description: """
+                            ),
+                            CharacterModel(
+                                imageName: "CUNADE",
+                                description: """
                              Пятая Хокаге Деревни Скрытого Листа. Одна из лучших ниндзя-медиков,
                              одна из трёх Саннинов и внучка Первого Хокаге — Хаширамы Сенджу и
                              первого джинчурики девятихвостого — Мито Узумаки. Учитель Харуно
                              Сакуры и Шизуне — племянницы её возлюбленного Дана Като.
                              """
-                         )]),
-     CustomViewModel(
-         sectionTitle: "Third Section",
-         characterInfo: [CharacterModel(
-             imageName: "NARUTO",
-             description: """
+                            )]),
+         CustomViewModel(
+            sectionTitle: "Third Section",
+            characterInfo: [CharacterModel(
+                imageName: "NARUTO",
+                description: """
                               Главный герой аниме и манги. Шиноби Деревни Скрытого Листа и член
                               команды Какаши (команда номер 7). Потомок    клана Узумаки, третий и
                               текущий джинчурики Курамы — девятихвостого лиса. Является последней
@@ -86,10 +88,10 @@ func getCustomViewModels() -> [CustomViewModel] {
                               войны шиноби женился на Хинате, впоследствии у них рождается сын
                               Боруто и дочь Химавари.
                               """
-         ),
-                         CharacterModel(
-                             imageName: "KAKASI",
-                             description: """
+            ),
+                            CharacterModel(
+                                imageName: "KAKASI",
+                                description: """
                              Джонин Деревни Скрытого Листа. Сын легендарного Белого Клыка Конохи —
                              Сакумо Хатаке. Находился в команде четвёртого Хокаге — Минато Намикадзе.
                              Теперь же возглавляет команду №7. Обладает Шаринганом, который достался
@@ -97,14 +99,15 @@ func getCustomViewModels() -> [CustomViewModel] {
                              Какаши Шаринган. Всегда опаздывает и читает извращенные книги Джирайи.
                              Становится Шестым Хокаге.
                              """
-                         ),
-                         CharacterModel(
-                             imageName: "CUNADE",
-                             description: """
+                            ),
+                            CharacterModel(
+                                imageName: "CUNADE",
+                                description: """
                              Пятая Хокаге Деревни Скрытого Листа. Одна из лучших ниндзя-медиков,
                              одна из трёх Саннинов и внучка Первого Хокаге — Хаширамы Сенджу и
                              первого джинчурики девятихвостого — Мито Узумаки. Учитель Харуно
                              Сакуры и Шизуне — племянницы её возлюбленного Дана Като.
                              """
-                         )])]
+                            )])]
+    }
 }

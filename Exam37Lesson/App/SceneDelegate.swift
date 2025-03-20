@@ -15,8 +15,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ViewController()
+        let VC = CharactersTable()
+        VC.dataManager = buildDataManager()
+        window?.rootViewController = VC
         window?.makeKeyAndVisible()
+    }
+}
+//MARK: - SetupDataManager
+private extension SceneDelegate {
+    func buildDataManager() -> IDataManager {
+        let repository = Repository()
+        let dataManager = CharactersDataManager(allCharacters: repository.getCustomViewModels())
+        return dataManager
     }
 }
 

@@ -13,9 +13,11 @@ class CharacterCustomView: UIView {
         return $0
     }(UIImageView())
     private let nameLabel: UILabel = {
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return $0
     }(UILabel())
     private let descriptionLabel: UILabel = {
+        $0.numberOfLines = 0
         return $0
     }(UILabel())
 //    MARK: Initializations
@@ -33,6 +35,9 @@ private extension CharacterCustomView {
     func setupUI(model: CharacterModel) {
         [characterImage, nameLabel, descriptionLabel].forEach {addSubview($0)}
         setupLayout()
+        characterImage.image = UIImage(named: model.imageName)
+        nameLabel.text = model.imageName
+        descriptionLabel.text = model.description
     }
 }
 //MARK: - Setup Layout
@@ -42,19 +47,21 @@ private extension CharacterCustomView {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 100),
-            widthAnchor.constraint(equalToConstant: 200),
+            heightAnchor.constraint(equalToConstant: 300),
+            widthAnchor.constraint(equalToConstant: 700),
             
             characterImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             characterImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            characterImage.heightAnchor.constraint(equalToConstant: 80),
-            characterImage.widthAnchor.constraint(equalToConstant: 80),
+            characterImage.heightAnchor.constraint(equalToConstant: 300),
+            characterImage.widthAnchor.constraint(equalToConstant: 300),
             
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             nameLabel.leadingAnchor.constraint(equalTo: characterImage.trailingAnchor, constant: 10),
             
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor)
+            descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
     }
 }
