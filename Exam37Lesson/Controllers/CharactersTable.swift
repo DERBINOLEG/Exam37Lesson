@@ -40,8 +40,8 @@ class CharactersTable: UITableViewController {
         let model = dataManager.allCharacters[indexPath.row]
         cell.configure(model: model)
         cell.selectionStyle = .none
-        cell.action = { text in
-            guard let presentCharacter = self.dataManager.getEqualCharacter(text) else {return}
+        cell.action = { id in
+            guard let presentCharacter = self.dataManager.getEqualCharacter(id) else { return }
             self.presentDetailVC(character: presentCharacter)
         }
         return cell

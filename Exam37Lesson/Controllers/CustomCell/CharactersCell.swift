@@ -23,7 +23,7 @@ class CharactersCell: UITableViewCell {
         return $0
     }(UIStackView())
 //    MARK: Properties
-    var action: ((String) -> ())?
+    var action: ((Int) -> ())?
 //    MARK: Initializations
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,8 +38,8 @@ class CharactersCell: UITableViewCell {
         sectionTitle.text = model.sectionTitle
         for character in model.characterInfo {
             let view = CharacterCustomView(characterModel: character)
-            view.action = { text in
-                self.action?(text)
+            view.action = { id in
+                self.action?(id)
             }
             hStackView.addArrangedSubview(view)
         }

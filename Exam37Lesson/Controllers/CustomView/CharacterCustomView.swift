@@ -21,7 +21,7 @@ class CharacterCustomView: UIView {
         return $0
     }(UILabel())
 //    MARK: Properties
-    var action: ((String) -> ())?
+    var action: ((Int) -> ())?
     let character: CharacterModel
 //    MARK: Initializations
     init(characterModel: CharacterModel) {
@@ -35,7 +35,7 @@ class CharacterCustomView: UIView {
     }
 //    MARK: Override Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        action?(character.imageName)
+        action?(character.id)
     }
 }
 //MARK: - SetupUI

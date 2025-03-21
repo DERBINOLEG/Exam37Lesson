@@ -10,4 +10,5 @@ import Foundation
 struct CharacterModel {
     let imageName: String
     let description: String
+    let id: Int
 }

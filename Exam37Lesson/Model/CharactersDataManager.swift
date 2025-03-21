@@ -9,7 +9,7 @@ import UIKit
 
 protocol IDataManager {
     var allCharacters: [CustomViewModel] { get }
-    func getEqualCharacter(_ nameCharacter: String) -> CharacterModel?
+    func getEqualCharacter(_ nameCharacter: Int) -> CharacterModel?
 }
 
 class CharactersDataManager: IDataManager {
@@ -17,9 +17,13 @@ class CharactersDataManager: IDataManager {
     init(allCharacters: [CustomViewModel]) {
         self.allCharacters = allCharacters
     }
-    func getEqualCharacter(_ nameCharacter: String) -> CharacterModel? {
+    func getEqualCharacter(_ idCharacter: Int) -> CharacterModel? {
         for section in allCharacters {
-            return section.characterInfo.first { $0.imageName == nameCharacter }
+            for character in section.characterInfo {
+                if character.id == idCharacter {
+                    return character
+                }
+            }
         }
         return nil
     }
