@@ -11,6 +11,7 @@ class CharactersCell: UITableViewCell {
 //    MARK: UIElements
     private let sectionTitle: UILabel = {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        $0.textColor = .yellow
         return $0
     }(UILabel())
     private let hScrollView: UIScrollView = {
@@ -18,9 +19,11 @@ class CharactersCell: UITableViewCell {
     }(UIScrollView())
     private let hStackView: UIStackView = {
         $0.axis = .horizontal
-        $0.spacing = 10
+        $0.spacing = 20
         return $0
     }(UIStackView())
+//    MARK: Properties
+    var action: ((String) -> ())?
 //    MARK: Initializations
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,9 +38,13 @@ class CharactersCell: UITableViewCell {
         sectionTitle.text = model.sectionTitle
         for character in model.characterInfo {
             let view = CharacterCustomView(characterModel: character)
+            view.action = { text in
+                self.action?(text)
+            }
             hStackView.addArrangedSubview(view)
         }
     }
+  
 }
 //MARK: - SetupUI
 private extension CharactersCell {
@@ -45,6 +52,7 @@ private extension CharactersCell {
         [sectionTitle, hScrollView].forEach {contentView.addSubview($0)}
         hScrollView.addSubview(hStackView)
         setupLayout()
+        contentView.backgroundColor = .gray
     }
 }
 //MARK: - Setup Layout
@@ -58,8 +66,8 @@ private extension CharactersCell {
             sectionTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             
             hScrollView.topAnchor.constraint(equalTo: sectionTitle.bottomAnchor, constant: 10),
-            hScrollView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
-            hScrollView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor),
+            hScrollView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            hScrollView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             hScrollView.heightAnchor.constraint(equalToConstant: 350),
             hScrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             

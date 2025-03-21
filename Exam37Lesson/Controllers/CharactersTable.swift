@@ -15,6 +15,12 @@ class CharactersTable: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(CharactersCell.self, forCellReuseIdentifier: cellIdentifier)
+        view.backgroundColor = .gray
+    }
+//    MARK: Methods
+    private func presentDetailVC(character: CharacterModel) {
+        let presentVC = CharacterInfoVC(characterInfo: character)
+        present(presentVC, animated: true)
     }
     // MARK: - Table view data source
     override func tableView(
@@ -34,6 +40,10 @@ class CharactersTable: UITableViewController {
         let model = dataManager.allCharacters[indexPath.row]
         cell.configure(model: model)
         cell.selectionStyle = .none
+        cell.action = { text in
+            guard let presentCharacter = self.dataManager.getEqualCharacter(text) else {return}
+            self.presentDetailVC(character: presentCharacter)
+        }
         return cell
     }
 }

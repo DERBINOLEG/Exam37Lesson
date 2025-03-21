@@ -20,14 +20,22 @@ class CharacterCustomView: UIView {
         $0.numberOfLines = 0
         return $0
     }(UILabel())
+//    MARK: Properties
+    var action: ((String) -> ())?
+    let character: CharacterModel
 //    MARK: Initializations
     init(characterModel: CharacterModel) {
+        self.character = characterModel
         super.init(frame: .zero)
         setupUI(model: characterModel)
     }
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+//    MARK: Override Methods
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        action?(character.imageName)
     }
 }
 //MARK: - SetupUI
@@ -38,6 +46,12 @@ private extension CharacterCustomView {
         characterImage.image = UIImage(named: model.imageName)
         nameLabel.text = model.imageName
         descriptionLabel.text = model.description
+        backgroundColor = .yellow
+        layer.cornerRadius = 20
+        layer.shadowColor = UIColor.red.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 10
+        layer.shadowOffset = CGSize(width: 5, height: 5)
     }
 }
 //MARK: - Setup Layout
@@ -47,7 +61,7 @@ private extension CharacterCustomView {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 300),
+            heightAnchor.constraint(equalToConstant: 320),
             widthAnchor.constraint(equalToConstant: 700),
             
             characterImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
